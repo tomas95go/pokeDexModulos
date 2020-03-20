@@ -1,0 +1,23 @@
+{
+  "name": "pokedexmodulos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^6.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Changuitoss/pokeDexModulos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Changuitoss/pokeDexModulos/issues"
+  },
+  "homepage": "https://github.com/Changuitoss/pokeDexModulos#readme"
+}

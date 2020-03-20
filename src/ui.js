@@ -45,6 +45,7 @@ export function mostrarInfoPokemon(infoPokemon) {
   const image = infoPokemon.sprites.front_default;
   const image1 = infoPokemon.sprites.back_default;
 
+  
   mostrarHabilidades(obtenerHabilidadesEsp(infoPokemon))
 
   imageDOM.setAttribute('src', image);
@@ -63,14 +64,14 @@ export function mostrarInfoPokemon(infoPokemon) {
 
 
 
-function mostrarHabilidades(habilidadesEsp) {
+function mostrarHabilidades(habilidadesObjEspanol) {
   const habilidadesDOM = document.querySelector('#abilityList');
   habilidadesDOM.innerHTML = '';
   const spanHabilidades = document.querySelector('#habilidades');
   //spanHabilidades.textContent = `${nombres.length}`;
   //console.log(Object.keys(habilidadesEsp))
-  console.log(Object.keys(habilidadesEsp))
-  console.log(habilidadesEsp)
+  console.log(Object.keys(habilidadesObjEspanol))
+  console.log(habilidadesObjEspanol)
 
   /* nombres.forEach(nombre => {
     const descripcion = nombre.flavor_text;
