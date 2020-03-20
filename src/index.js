@@ -8,7 +8,6 @@ function actualizar() {
 
 function inicializar() {
   const listado = document.querySelector('#listado');
-
   obtenerListadoPokemones()
   .then((pokemones) => {
     listado.appendChild(mostrarListado(pokemones));
