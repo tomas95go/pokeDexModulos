@@ -35,7 +35,6 @@ export function mostrarListado(pokemones) {
 }
 
 export function mostrarInfoPokemon(infoPokemon) {
-  //console.log('mostrarinfo: i', infoPokemon);
   const imageDOM = document.querySelector('#image');
   const imageDOM1 = document.querySelector('#image1');
   const nameDOM = document.querySelector('#name');
@@ -45,11 +44,7 @@ export function mostrarInfoPokemon(infoPokemon) {
   const image = infoPokemon.sprites.front_default;
   const image1 = infoPokemon.sprites.back_default;
 
-  
-  mostrarHabilidades(obtenerHabilidadesEsp(infoPokemon))
-
   imageDOM.setAttribute('src', image);
-  // Si tiene solo 1 imagen, elimina el segundo <img> del DOM
   if (image1) {
     imageDOM1.setAttribute('src', image1);
   } else {
@@ -59,33 +54,34 @@ export function mostrarInfoPokemon(infoPokemon) {
   nameDOM.textContent = name[0].toUpperCase() + name.slice(1, name.length);
   heightDOM.textContent = `Altura: ${height * 10}cm`;
   weightDOM.textContent = `Peso: ${(weight * 0.1).toFixed(1)}kg`;
+
+  return mostrarHabilidades(obtenerHabilidadesEsp(infoPokemon));
 }
 
-
-
-
-function mostrarHabilidades(habilidadesObjEspanol) {
+function mostrarHabilidades(habilidadesEsp) {
   const habilidadesDOM = document.querySelector('#abilityList');
   habilidadesDOM.innerHTML = '';
   const spanHabilidades = document.querySelector('#habilidades');
-  //spanHabilidades.textContent = `${nombres.length}`;
-  //console.log(Object.keys(habilidadesEsp))
-  console.log(Object.keys(habilidadesObjEspanol))
-  console.log(habilidadesObjEspanol)
+  /*
+    Aca simplemente termino la promise y luego con el foreach ya se va agregando
+    los items a la lista, puedo aplicar un forEach porque esto devuelve un array con
+    2 promises, lo mismo para el .then, es aplicable porque devuelve promises.
+  */
+  habilidadesEsp.forEach((value, i) => {
 
-  /* nombres.forEach(nombre => {
-    const descripcion = nombre.flavor_text;
-    const liHabilidad = document.createElement('li');
-    liHabilidad.classList.add('list-group-item');
-    const pNombreHabilidad = document.createElement('p');
-    pNombreHabilidad.textContent = nombre[0].toUpperCase() + nombre.slice(1, nombre.length) + ':';
+  const liHabilidad = document.createElement('li');
+  liHabilidad.classList.add('list-group-item');
+  const pNombreHabilidad = document.createElement('p');
+  const pDescripcionHabilidad = document.createElement('p');
+
+    value.then((data) => {
+      pNombreHabilidad.textContent  = data.name.toUpperCase();
+      pDescripcionHabilidad.textContent = data.flavor_text_entries[4].flavor_text;
+
+    })
     liHabilidad.appendChild(pNombreHabilidad);
-  
-    const pDescripcionHabilidad = document.createElement('p');
-    pDescripcionHabilidad.textContent = descripcion;
-    pNombreHabilidad.appendChild(pDescripcionHabilidad);
-  
+    liHabilidad.appendChild(pDescripcionHabilidad);
     habilidadesDOM.appendChild(liHabilidad);
-  })
- */
+  });
+
 }
